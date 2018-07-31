@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--<link rel="stylesheet" href="css/vue-material.min.css" />
+    <link rel="stylesheet" href="css/default.css" />-->
+    <link rel="stylesheet" href="//unpkg.com/vue-material@1.0.0-beta-10.2/dist/vue-material.min.css">
+    <link rel="stylesheet" href="//unpkg.com/vue-material@1.0.0-beta-10.2/dist/theme/default.css">
+    <link rel="stylesheet" href="css/app.css" />
+    <!--<link rel="stylesheet" href="css/font.css" />-->
+    <!--<link rel="stylesheet" href="css/animate.min.css" />-->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//fonts.proxy.ustclug.org/css?family=Roboto:400,500,700,400italic|Material+Icons">
+    <title>小鲤产品目录</title>
+  </head>
+  <body>
+    <div id="app">
+    	<xl-mask v-if="!loaded"></xl-mask>
+    	<template v-else>
+    		<xl-frame :all-data.sync="allData" :selected.sync="selected" :detail.sync="detail" v-show="showingComp == 'frame'"></xl-frame>
+    		<xl-detail :detail.sync="detail" v-show="showingComp == 'detail'"></xl-detail>
+    	</template>
+    </div>
+  </body>
+      
+  <!--<script type="text/javascript" src="js/vue.min.js" ></script>
+  <script type="text/javascript" src="js/vue-material.js" ></script>-->
+  <script type="text/javascript" src="js/velocity.min.js" ></script>
+  <!--<script type="text/javascript" src="js/axios.js" ></script>-->
+  <!--<script type="text/javascript" src="js/sweetalert2.js" ></script>-->
+  
+  <script src="//cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
+  <script src="//unpkg.com/vue-material@1.0.0-beta-10.2/dist/vue-material.min.js"></script>
+  <!--<script src="//cdn.jsdelivr.net/npm/velocity-animate@1.5/velocity.ui.min.js"></script>-->
+  <script src="//unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2"></script>
+
+  
+  <script type="text/javascript" src="js/plugins/ColumnInfoPlugin.js" ></script>
+  <script type="text/javascript" src="js/plugins/DictionaryPlugin.js" ></script>
+  <script type="text/javascript" src="js/plugins/HttpPlugin.js" ></script>
+  
+  <script>
+  	(function () {
+			if (!Object.values) Object.values = function(obj) {
+			    if (obj !== Object(obj))
+			        throw new TypeError('Object.values called on a non-object');
+			    var val=[],key;
+			    for (key in obj) {
+			        if (Object.prototype.hasOwnProperty.call(obj,key)) {
+			            val.push(obj[key]);
+			        }
+			    }
+			    return val;
+			}
+			console.log(document.body.offsetHeight)
+			Vue.use(VueMaterial.default)
+			Vue.use(HttpPlugin)
+			Vue.use(ColumnInfoPlugin)
+			Vue.use(DictionaryPlugin)
+  	})()
+  </script>
+  <script type="text/javascript" src="js/components/Mask.vue.js" ></script>
+  <script type="text/javascript" src="js/components/Frame.vue.js" ></script>
+  <script type="text/javascript" src="js/components/Detail.vue.js" ></script>
+	<script>
+		(function () {
+			var app = new Vue({
+				el: '#app',
+				data: {
+					loaded: false,
+					selected: {},
+					allData: [],
+					showingComp: 'frame',
+					detail: {}
+				},
+				methods: {
+					initData () {
+						var frame = this
+						var checkInited = setInterval(function () {
+							if (frame.$dictionary.inited && frame.$columnInfo.inited) {
+								clearInterval(checkInited)
+								frame.getTabData()
+							}
+						}, 100)
+					},
+					getTabData () {
+						var frame = this
+						this.$http.get('/api/getData').then(function(response) {
+							if (response.data.success) {
+								frame.allData = response.data.data
+								frame.loaded = true
+							} else {
+								swal({
+									title: '数据检索失败!',
+									text: response.data.errMsg,
+									type: 'error',
+									confirmButtonClass: 'md-primary md-button md-raised md-primary md-button-content md-theme-default',
+									confirmButtonText: 'OK',
+									buttonsStyling: false
+								})
+							}
+						})
+					}
+				},
+				watch: {
+					detail (val) {
+						if (val.serial) {
+							this.showingComp = 'detail'
+						} else {
+							this.showingComp = 'frame'
+						}
+					}
+				},
+				mounted () {
+					this.$dictionary.initData(this.$http)
+					this.$columnInfo.initData(this.$http)
+					this.initData()
+				}
+			})
+		})()
+	</script>
+</html>

@@ -1,0 +1,207 @@
+   html {
+   	-webkit-text-size-adjust: none;
+   }
+  .mask {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: rgba(0, 0, 0, 0.4);
+  }
+  .frame-container {
+    width: 100%;
+    /*display: inline-flex;*/
+    /*overflow: hidden;*/
+    /*border: 1px solid rgba(#000, 0.26);*/
+    /*background: rgba(#000, 0.06);*/
+  }
+  .frame-self {
+    height: 100%;
+  }
+  .tabbar-container {
+    height: 60px;
+    width: 100%;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    overflow: hidden;
+    border: 0px solid rgba(#000, 0.26);
+    background: rgba(#000, 0.06);
+    position: fixed;
+    bottom: 0;
+  }
+  .my-bottom-bar {
+    height: 50px;
+    background-color: #448aff!important;
+  }
+  .my-bottom-item {
+  	color: #fff!important;
+  }
+  .my-bottom-item i {
+  	color: #fff!important;
+  }
+  .shape-app {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 0px;
+    border-radius: 0px;
+    min-height: 100vh;
+    max-height: 100vh;
+    /*min-height: calc(100vh - 60px);
+    max-height: calc(100vh - 60px);*/
+  }
+  .frame-app {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 0px;
+    border-radius: 0px;
+    min-height: calc(100vh - 60px);
+    max-height: calc(100vh - 60px);
+    border: 0px solid rgba(#000, .12);    
+  }
+  /*.md-app {
+    min-height: calc(100vh - 60px);
+    max-height: calc(100vh - 60px);
+    border: 0px solid rgba(#000, .12);
+  }*/
+  .search {
+    width: 60vw;
+    max-width: 500px;
+  }
+  .md-drawer {
+    width: 230px;
+    max-width: calc(100vw - 125px);
+  }
+  .typeList {
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+.my-elevation-20 {
+  box-shadow:0 10px 13px -6px rgba(0,0,0,.2),0 20px 31px 3px rgba(0,0,0,.14),0 8px 38px 7px rgba(0,0,0,.12)!important;
+}
+.has-ripple {
+  display: inline-block;
+  position: relative
+}
+.no-border {
+  border: 0px;
+  border-radius: 0px;
+}
+.radius-shape-div {
+  border-radius: 0px;
+}
+
+  .my-link {
+    position:absolute;
+    right:20px;
+    opacity: 0.6;
+    z-index:100
+  }
+  .my-link-down {
+    top:calc(50vh + 5px);
+  }
+  .my-link-up {
+    bottom: calc(50vh + 5px);
+  }
+  .my-bottom-up {
+    position:relative;
+    right:20px;
+    top:calc(50vh - 5px);
+    opacity: 0.7;
+    z-index:10
+  }
+  .my-title {
+    max-width: 60vw;
+    font-size: 16px;
+  }
+  .my-toolbar {
+    font-size: 16px;
+    /*color: white!important;*/
+  }
+  .my-drawer {
+    margin-top: 0px;
+    /*background-color: #191919;*/
+  }
+  .my-drawer-list {
+    /*padding: 0px;*/
+    /*margin-top: 4px;*/
+    /*background-color: #191919;*/
+  }
+  .my-drawer-item {
+    /*background-color: #e91e63;*/
+    /*background-color: brown;*/
+    /*margin: 0px 10px 12px;*/
+    /*border-radius: 10px;*/
+  }
+  .my-drawer-span {
+    color: #191919;
+  }
+  .without-subhead {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
+  .item-icon {
+    margin-right: 32px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    align-self: flex-start;
+    color: #fff!important;
+  }
+  .item-detail {
+    flex: 1;
+    align-self: auto;
+    vertical-align: middle;
+    height: 100%;
+    width: 100%;
+    display:inline-block;
+    /*white-space: pre-wrap;*/
+  }
+  .card-reservation {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .info-card {
+    width: 100%;
+    margin: 4px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+  }
+  .shape-app {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 0px;
+    border-radius: 0px;
+  }
+  /*.md-app {
+    min-height: 100vh;
+    max-height: 100vh;
+    border: 0px solid rgba(#000, .12);
+  }*/
+  .search {
+    width: 60vw;
+    max-width: 500px;
+  }
+  .md-drawer {
+    width: 230px;
+    max-width: calc(100vw - 125px);
+  }
+  .typeList {
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .detail-content {
+  	padding-left: 0px;
+  }
